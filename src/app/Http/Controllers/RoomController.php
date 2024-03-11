@@ -25,4 +25,11 @@ class RoomController extends Controller
 
         return RoomResource::make($room);
     }
+
+    public function getRoomsByUserId($userId)
+    {
+        $rooms = $this->roomService->getRoomsByUserId($userId);
+
+        return RoomResource::collection($rooms);
+    }
 }

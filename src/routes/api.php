@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function() {
-    Route::post('/create-room');
+    Route::post('/create-room', [RoomController::class, 'store']);
+
+    Route::get('/get-rooms/{id}', [RoomController::class, 'getRoomsByUserId']);
 });

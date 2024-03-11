@@ -18,5 +18,14 @@ class RoomService
             'user_id' => $userId,
             'is_admin' => true
         ]);
+
+        return $room;
+    }
+
+    public function getRoomsByUserId(string $userId)
+    {
+        return Room::whereHas('members', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->get();
     }
 }

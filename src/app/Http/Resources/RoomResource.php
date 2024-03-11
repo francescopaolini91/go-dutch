@@ -18,7 +18,8 @@ class RoomResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'total' => $this->total,
-            'endDate' => $this->endDate
+            'endDate' => $this->endDate,
+            'members' => RoomMemberResource::collection($this->whenLoaded('members'))
         ];
     }
 }
